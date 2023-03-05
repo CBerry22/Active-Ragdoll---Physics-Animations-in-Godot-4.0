@@ -1,0 +1,30 @@
+[gd_scene load_steps=5 format=3 uid="uid://dkyrundou775s"]
+
+[ext_resource type="Script" path="res://scenes/bowling_ball.gd" id="1_2cdm3"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_r3c1l"]
+albedo_color = Color(1, 0.0862745, 0.0784314, 1)
+metallic = 0.4
+roughness = 0.17
+clearcoat_enabled = true
+
+[sub_resource type="SphereMesh" id="SphereMesh_xqsil"]
+material = SubResource("StandardMaterial3D_r3c1l")
+radius = 0.1
+height = 0.2
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_vrdss"]
+radius = 0.1
+
+[node name="BowlingBall" type="RigidBody3D"]
+collision_layer = 8
+collision_mask = 11
+mass = 4.0
+continuous_cd = true
+script = ExtResource("1_2cdm3")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("SphereMesh_xqsil")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_vrdss")
